@@ -1,0 +1,1 @@
+Outline for a Python script that can help you manage your notes inside the "notes" folder. This script will allow you to create, search, and link notes, all while adhering to the Zettelkasten methodology.
