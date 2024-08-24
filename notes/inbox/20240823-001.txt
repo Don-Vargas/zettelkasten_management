@@ -1,6 +1,10 @@
+uuid = e2f9c93b-9f8b-4e0a-93a8-77de7453348b
+
 Title: The Benefits of Daily Writing Practice
 
-UID: 20240823-001
+ZK_UID: 202-A-1.08-b-293-001
+
+Date : 2024-08-23 10:00:00
 
 Content:
 Daily writing practice enhances cognitive function, improves writing skills, and helps clarify thoughts. Consistent writing builds discipline and allows for the gradual development of ideas over time.
@@ -10,8 +14,13 @@ Source: @calnewport2016deepwork
 
 Tags: #Writing #Productivity #DailyHabits
 
-Links to Other Notes:
-Related to: UID 20240822-003 (Benefits of Morning Routines)
+Links forward to Other Notes:
+Related to: ZK_UID 20240822-003 (Benefits of Morning Routines)
+Related to: ZK_UID 20240822-004 (Benefits of Nigth Routines)
+
+Linked backward from Other Notes:
+Related to: ZK_UID 20240822-003 (Benefits of Morning Routines)
+Related to: ZK_UID 20240822-002 (Benefits of Evening Routines)
 
 Thoughts/Connections:
 Daily writing can also serve as a mindfulness practice, grounding the mind and focusing attention. Consider incorporating this into morning routines for maximum benefit.

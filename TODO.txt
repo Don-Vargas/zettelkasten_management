@@ -1,0 +1,5 @@
+1. Agregar auto tag con nltk
+2. Agregar sugerencia de fecha y zk_uid
+3. Valorar si link_backward_notes en link_notes es util o no.
+4. Agregar pruebas
+
