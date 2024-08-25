@@ -2,4 +2,4 @@
 2. Agregar sugerencia de fecha y zk_uid
 3. Valorar si link_backward_notes en link_notes es util o no.
 4. Agregar pruebas
-
+5. crear notas nuevas en el inbox con nombre de la fecha creada con todo y la hora
