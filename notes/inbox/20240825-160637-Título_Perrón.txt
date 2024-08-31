@@ -1,0 +1,11 @@
+UUID: 2d294214-7221-4423-b0a2-5a6307a20147
+Title: Título Perrón
+ZK_UID: None
+Date: 2024-08-25 16:06:37
+Content:
+estas son puros contenidos perrones.
+References:
+fuente: de sodas
+Tags: notas,  perronas
+Thoughts/Connections:
+es la nota más perrona de todas las notas perronas

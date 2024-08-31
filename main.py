@@ -38,33 +38,30 @@ Author:
 License:
     [Your License Information]
 """
-import os  # Import the os module for file and directory operations
+import os
 import datetime
 
-# Import functions from the same src/ folder
-from . note_model import NoteModel, NoteIdentifiers, NoteLinks, NoteMetadata, NoteContent
-from . create_note import create_note
-from . search_notes import search_notes
-from . link_notes import link_forward_notes
-from . list_all_notes import list_all_notes
-from . import NOTES_DIR_INBOX  # Directory where all the notes are stored
-from . import NOTES_DIR_PERMA  # Directory where all the notes are stored
+from src.note_model import NoteModel, NoteIdentifiers, NoteLinks, NoteMetadata, NoteContent
+from src.create_note import create_note
+from src.search_notes import search_notes
+from src.link_notes import link_forward_notes
+from src.list_all_notes import list_all_notes
+from src import NOTES_DIR_INBOX
+from src import NOTES_DIR_PERMA
 
 def create_new_note():
     """Handles the creation of a new note."""
-    title = input("Enter the title of the note: ")
-    content = input("Enter the content of the note: ")
-    tags = input("Enter tags (comma-separated): ").split(',')
-    references = input("Enter references (comma-separated): ").split(',')
-    thoughts = input("Enter any additional thoughts: ")
+    title = input("Enter the title of the note: \n")
+    content = input("Enter the content of the note: \n")
+    tags = input("Enter tags (comma-separated): \n").split(',')
+    references = input("Enter references (comma-separated): \n").split(',')
+    thoughts = input("Enter any additional thoughts: \n")
 
-    # Create an instance of NoteModel
     new_note = NoteModel(
         identifiers=NoteIdentifiers(
             uuid=None,
             zk_uid=None
         ),
-        # You can set a specific date below if needed
         date=datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S'),
         metadata=NoteMetadata(
             references=references,
@@ -81,7 +78,6 @@ def create_new_note():
         )
     )
 
-    # Call the create_note function with the note instance
     create_note(new_note)
     print("Note created successfully.")
 
@@ -123,12 +119,26 @@ def link_notes_action():
     link_forward_notes(note_uid, linked_uids, NOTES_DIR_PERMA)
     print("Notes linked successfully.")
 
+def exit_program():
+    """Exits the program."""
+    print("Exiting the program.")
+    exit()
+
 def main():
     """
     Main function for the Zettelkasten Note Manager command-line interface.
     """
+    options = {
+        '1': create_new_note,
+        '2': search_notes_in_inbox,
+        '3': search_notes_in_permanent,
+        '4': list_inbox_notes,
+        '5': list_permanent_notes,
+        '6': link_notes_action,
+        '7': exit_program,
+    }
+
     while True:
-        # Display the main menu
         print("Zettelkasten Note Manager")
         print("1. Create a new note")
         print("2. Search notes in inbox")
@@ -138,31 +148,12 @@ def main():
         print("6. Link notes")
         print("7. Exit")
 
-        # Get user choice
         choice = input("Enter your choice: ")
 
-        # Handle user choices
-        if choice == '1':
-            create_new_note()
-        elif choice == '2':
-            search_notes_in_inbox()
-        elif choice == '3':
-            search_notes_in_permanent()
-        elif choice == '4':
-            list_inbox_notes()
-        elif choice == '5':
-            list_permanent_notes()
-        elif choice == '6':
-            link_notes_action()
-        elif choice == '7':
-            break
-        else:
-            print("Invalid choice. Please try again.")
+        # Execute the corresponding function, or print an error message if invalid
+        options.get(choice, lambda: print("Invalid choice. Please try again."))()
 
 if __name__ == "__main__":
-    # Ensure the notes directory exists
     os.makedirs(NOTES_DIR_INBOX, exist_ok=True)
     os.makedirs(NOTES_DIR_PERMA, exist_ok=True)
-
-    # Start the main function
     main()
