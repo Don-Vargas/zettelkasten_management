@@ -40,22 +40,76 @@ License:
 """
 import os
 import datetime
+from typing import List, Tuple
 
 from src.note_model import NoteModel, NoteIdentifiers, NoteLinks, NoteMetadata, NoteContent
 from src.create_note import create_note
-from src.search_notes import search_notes
+from src.search_notes import search_notes, list_all_titles
 from src.link_notes import link_forward_notes
 from src.list_all_notes import list_all_notes
 from src import NOTES_DIR_INBOX
 from src import NOTES_DIR_PERMA
 
+
+def title_check(title: str, titles_with_uuids: List[Tuple[str, str]]) -> bool:
+    """
+    Checks if the title is repeated in the list of titles with their corresponding UUIDs.
+
+    Parameters:
+        title (str): The title to check.
+        titles_with_uuids (List[Tuple[str, str]]): A list of tuples, where each tuple contains
+        a title and its corresponding UUID.
+
+    Returns:
+        bool: True if the title is repeated, False otherwise.
+    """
+    # Count the number of occurrences of the title in the list
+    occurrences = sum(1 for t, _ in titles_with_uuids if t == title)
+
+    # If the title occurs more than once, it's repeated
+    return occurrences > 0
+
+def format_tags(tags_input: str) -> List[str]:
+    """
+    Formats tags to ensure each tag starts with a '#' character.
+
+    Parameters:
+        tags_input (str): A comma-separated string of tags.
+
+    Returns:
+        List[str]: A list of formatted tags where each tag starts with '#'.
+    """
+    # Split the input string into a list of tags
+    tags = [tag.strip() for tag in tags_input.split(',')]
+
+    # Format each tag to ensure it starts with '#'
+    formatted_tags = [tag if tag.startswith('#') else '#' + tag for tag in tags]
+
+    return formatted_tags
+
 def create_new_note():
     """Handles the creation of a new note."""
     title = input("Enter the title of the note: \n")
+
+    # Get all titles with their UUIDs
+    titles_with_uuids = list_all_titles(NOTES_DIR_PERMA)
+    # Check if the title is already in the list and prompt the user to enter a different title
+    while title_check(title, titles_with_uuids):
+        # Find and display the UUIDs for the existing title
+        existing_uuids = [uuid for t, uuid in titles_with_uuids if t == title]
+        print(f"This title already exists in permanent notes with UUID(s): {', '.join(existing_uuids)}")
+        title = input("Please enter a different note title \n")
+
+    print("\n...................................\n ")
     content = input("Enter the content of the note: \n")
-    tags = input("Enter tags (comma-separated): \n").split(',')
+    print("\n...................................\n ")
+    tags_input = input("Enter tags with the format '#tag' (comma-separated): \n")
+    tags = format_tags(tags_input)
+    print("\n...................................\n ")
     references = input("Enter references (comma-separated): \n").split(',')
+    print("\n...................................\n ")
     thoughts = input("Enter any additional thoughts: \n")
+    print("\n...................................\n ")
 
     new_note = NoteModel(
         identifiers=NoteIdentifiers(
@@ -139,7 +193,9 @@ def main():
     }
 
     while True:
+        print("\n____________________________________\n ")
         print("Zettelkasten Note Manager")
+        print("\n____________________________________\n ")
         print("1. Create a new note")
         print("2. Search notes in inbox")
         print("3. Search notes in permanent notes")
@@ -147,8 +203,10 @@ def main():
         print("5. List all permanent notes")
         print("6. Link notes")
         print("7. Exit")
+        print("\n____________________________________\n ")
 
         choice = input("Enter your choice: ")
+        print("\n____________________________________\n ")
 
         # Execute the corresponding function, or print an error message if invalid
         options.get(choice, lambda: print("Invalid choice. Please try again."))()

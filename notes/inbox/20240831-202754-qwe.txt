@@ -1,0 +1,11 @@
+UUID: 6edd1d06-ff08-436f-8ed8-0fe890157efe
+Title: qwe
+ZK_UID: None
+Date: 2024-08-31 20:27:54
+Content:
+qwe
+References:
+qwe
+Tags: qwe
+Thoughts/Connections:
+qwe

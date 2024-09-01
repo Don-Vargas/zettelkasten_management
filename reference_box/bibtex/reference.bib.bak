@@ -1,3 +1,12 @@
 % Encoding: UTF-8
 
+@Book{Ahrens2022,
+  title     = {El Método zettelkasten: Cómo tomar notas de forma eficaz para Impulsar La Escritura y el aprendizaje de estudiantes, Académicos y Escritores de no Ficción},
+  publisher = {CREATESPACE INDEPENDENT PUBLISHING PLATF},
+  year      = {2022},
+  author    = {Ahrens, Sönke},
+  isbn      = {9798685830333},
+  owner     = {hecvagu},
+}
+
 @Comment{jabref-meta: databaseType:bibtex;}

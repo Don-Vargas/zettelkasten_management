@@ -1,0 +1,11 @@
+UUID: 469aecae-a47b-42bc-88cc-8a01eda7ac2b
+Title: nota2
+ZK_UID: None
+Date: 2024-08-31 18:18:25
+Content:
+nota perrona 2
+References: 
+Ahrens2022, referencia perrota página 123
+Tags: perrona,  nota-perrota
+Thoughts/Connections:
+esta es la segunda nota más perrota del zk
