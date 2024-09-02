@@ -44,7 +44,7 @@ import re
 
 from datetime import datetime
 
-from .note_model import NoteModel, NoteIdentifiers, NoteLinks, NoteMetadata, NoteContent
+from ..utils.note_model import NoteModel, NoteIdentifiers, NoteLinks, NoteMetadata, NoteContent
 
 def find_note_filepath(note_uid, directories):
     """

@@ -32,8 +32,8 @@ import os
 import datetime
 import uuid
 
-from . import UID_FORMAT, NOTES_DIR_INBOX
-from .note_model import NoteModel
+from .. import UID_FORMAT, NOTES_DIR_INBOX
+from ..utils.note_model import NoteModel
 
 # Generate ZK_UID
 def generate_zk_uid():
