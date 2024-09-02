@@ -96,4 +96,3 @@ def list_all_titles(address: str) -> List[Tuple[str, str]]:
                     titles_with_uuids.append((title, uuid))
 
     return titles_with_uuids  # Return the list of tuples containing titles and UUIDs
-    

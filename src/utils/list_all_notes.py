@@ -1,3 +1,35 @@
+"""
+list_notes.py
+-------------
+
+This package provides functionality to list all note files within a specified directory and 
+extract essential metadata such as UUID, title, and file name.
+
+Functions:
+- list_all_notes: Retrieves and returns a list of tuples containing the UUID, title, and file name 
+                  of all note files in a given directory.
+
+Key Features:
+- Scans a directory for all text files associated with notes.
+- Extracts metadata (UUID and title) from each note file.
+- Returns structured information to assist with note management tasks.
+
+Usage:
+Typically used as part of a note management system, such as a Zettelkasten implementation.
+Can be called directly in scripts to gather information about notes in a specified directory.
+
+Dependencies:
+- os: Imports the os module to handle file and directory operations.
+- re: Imports the re module to perform regular expression operations.
+- typing: Imports the typing module to specify type hints for function signatures.
+
+Author:
+Hector Alejandro Vargas Gutierrez
+
+License:
+[Specify the license under which the package is distributed, if applicable.]
+"""
+
 import os
 import re
 from typing import List, Tuple

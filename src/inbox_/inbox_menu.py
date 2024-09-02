@@ -42,11 +42,11 @@ import os
 import datetime
 from typing import List, Tuple
 
-from src.note_model import NoteModel, NoteIdentifiers, NoteLinks, NoteMetadata, NoteContent
-from src.create_note import create_note
-from src.search_notes import search_notes, list_all_titles
-from src.link_notes import link_forward_notes
-from src.list_all_notes import list_all_notes
+from src.utils.note_model import NoteModel, NoteIdentifiers, NoteLinks, NoteMetadata, NoteContent
+from src.inbox_.create_note import create_note
+from src.utils.search_notes import search_notes, list_all_titles
+from src.inbox_.link_notes import link_forward_notes
+from src.utils.list_all_notes import list_all_notes
 from src import NOTES_DIR_INBOX
 from src import NOTES_DIR_PERMA
 
@@ -106,7 +106,13 @@ def create_new_note():
     tags_input = input("Enter tags with the format '#tag' (comma-separated): \n")
     tags = format_tags(tags_input)
     print("\n...................................\n ")
-    references = input("Enter references (comma-separated): \n").split(',')
+    references = input("Enter valid reference keys (comma-separated): \n").split(',')
+
+    '''
+    TODO:
+    - verificar si las referencias existen en el jabref.
+    '''
+
     print("\n...................................\n ")
     thoughts = input("Enter any additional thoughts: \n")
     print("\n...................................\n ")
@@ -143,13 +149,6 @@ def search_notes_in_inbox():
     for result in results:
         print(result)
 
-def search_notes_in_permanent():
-    """Searches notes in the permanent notes directory."""
-    keyword = input("Enter keyword to search in permanent notes: ")
-    results = search_notes(keyword, NOTES_DIR_PERMA)
-    print(f"Found {len(results)} notes:")
-    for result in results:
-        print(result)
 
 def list_inbox_notes():
     """Lists all notes in the inbox directory."""
@@ -157,61 +156,56 @@ def list_inbox_notes():
     print(f"Total notes: {len(notes)}")
     for note in notes:
         print(note)
-
-def list_permanent_notes():
-    """Lists all notes in the permanent notes directory."""
-    notes = list_all_notes(NOTES_DIR_PERMA)
-    print(f"Total notes: {len(notes)}")
-    for note in notes:
-        print(note)
-
+        
 def link_notes_action():
     """Handles linking notes."""
+    '''
     note_uid = input("Enter the UID of the note to link from: ")
+    
     uids_input = input("Enter the UIDs of the notes to link to (comma-separated): ")
     linked_uids = uids_input.split(',')
     link_forward_notes(note_uid, linked_uids, NOTES_DIR_PERMA)
+    TODO:
+    cambiar approach.
+    
+    '''
     print("Notes linked successfully.")
-
+    
 def exit_program():
     """Exits the program."""
     print("Exiting the program.")
     exit()
 
-def main():
+def inbox_menu_():
     """
     Main function for the Zettelkasten Note Manager command-line interface.
     """
     options = {
         '1': create_new_note,
         '2': search_notes_in_inbox,
-        '3': search_notes_in_permanent,
-        '4': list_inbox_notes,
-        '5': list_permanent_notes,
-        '6': link_notes_action,
-        '7': exit_program,
+        '3': list_inbox_notes,
+        '4': link_notes_action,
+        '5': lambda: 'main',
+        '6': exit_program,
     }
 
     while True:
         print("\n____________________________________\n ")
-        print("Zettelkasten Note Manager")
+        print("Zettelkasten Note Manager \n")
+        print("Welcome to Inbox Notes.")
         print("\n____________________________________\n ")
         print("1. Create a new note")
         print("2. Search notes in inbox")
-        print("3. Search notes in permanent notes")
-        print("4. List all inbox notes")
-        print("5. List all permanent notes")
-        print("6. Link notes")
-        print("7. Exit")
+        print("3. List all inbox notes")
+        print("4. Link notes")
+        print("5. Exit to main menu.")
+        print("6. Exit")
         print("\n____________________________________\n ")
 
         choice = input("Enter your choice: ")
         print("\n____________________________________\n ")
 
         # Execute the corresponding function, or print an error message if invalid
-        options.get(choice, lambda: print("Invalid choice. Please try again."))()
-
-if __name__ == "__main__":
-    os.makedirs(NOTES_DIR_INBOX, exist_ok=True)
-    os.makedirs(NOTES_DIR_PERMA, exist_ok=True)
-    main()
+        action = options.get(choice, lambda: print("Invalid choice. Please try again."))()
+        if action:
+            return action  # Return to the main loop for processing
