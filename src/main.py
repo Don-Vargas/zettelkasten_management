@@ -1,11 +1,8 @@
 # main.py
-from src.inbox_ import inbox_menu_
+from src.inbox_notes_ import inbox_menu_
 from src.permanent_notes_ import permanent_notes_menu_
-
-def exit_program():
-    """Exits the program."""
-    print("Exiting the program.")
-    exit()
+from src.reference_notes_ import reference_notes_menu_
+from src.utils.menu_utils import exit_program
 
 def main():
     """
@@ -14,7 +11,8 @@ def main():
     options = {
         '1': inbox_menu_,
         '2': permanent_notes_menu_,
-        '3': exit_program,
+        '3': reference_notes_menu_,
+        '4': exit_program,
     }
 
     while True:
@@ -23,7 +21,8 @@ def main():
         print("\n____________________________________\n ")
         print("1. Inbox Menu")
         print("2. Permanent Notes Menu")
-        print("3. Exit")
+        print("3. Reference Notes Menu")
+        print("4. Exit")
         print("\n____________________________________\n ")
 
         choice = input("Enter your choice: ")
