@@ -1,0 +1,11 @@
+UUID: aaa51793-dc19-4ca7-9735-6db9e41b843f
+Title: any(t == title for t, _ in titles_with_uuids)
+ZK_UID: 20240904-211319
+Date: 2024-09-04 21:13:19
+Content:
+asdf
+References:
+sadf
+Tags: #asdf
+Thoughts/Connections:
+asdf

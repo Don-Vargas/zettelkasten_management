@@ -34,7 +34,7 @@ import os
 import re
 from typing import List, Tuple
 
-def list_all_notes(address: str) -> List[Tuple[str, str, str]]:
+def list_notes(address: str) -> List[Tuple[str, str, str]]:
     """
     Lists all note files in the specified notes directory and extracts the UUID, title, 
     and file name for each note.

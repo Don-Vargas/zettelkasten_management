@@ -1,0 +1,11 @@
+UUID: 513cab1a-2b12-470a-8fdc-3603d0b88e3c
+Title: NEW NOTE 00
+ZK_UID: 20240904-210746
+Date: 2024-09-04 21:07:46
+Content:
+new new new new
+References:
+Ahrens2022
+Tags: #new #newton #nuevo #de_paquete
+Thoughts/Connections:
+nuevo de paquete

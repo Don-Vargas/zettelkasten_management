@@ -1,9 +1,10 @@
 from src.utils.menu_utils import welcome_note
-from src.inbox_notes_.note_creation import new_note
-from .search_action import search_notes_in_inbox
-from .list_action import list_inbox_notes
-from .link_action import link_notes_action
+from src.inbox_notes_.new_note_utils import new_note_action
+from src.utils.note_utils.search_note_utils import search_notes_action
+from src.utils.note_utils.list_note_utils import list_notes_action
+from src.inbox_notes_.link_notes_utils import link_notes_action
 from src.utils.menu_utils import exit_program
+from src import NOTES_DIR_INBOX
 
 entorno = 'I N B O X'
 
@@ -13,9 +14,9 @@ def inbox_menu_():
     """
     options = {
         '0': lambda: welcome_note(entorno),
-        '1': new_note,
-        '2': search_notes_in_inbox,
-        '3': list_inbox_notes,
+        '1': new_note_action,
+        '2': lambda: search_notes_action(NOTES_DIR_INBOX),
+        '3': lambda: list_notes_action(NOTES_DIR_INBOX),
         '4': link_notes_action,
         '5': lambda: 'main',
         '6': exit_program,

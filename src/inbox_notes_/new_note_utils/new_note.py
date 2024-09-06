@@ -31,9 +31,9 @@ License:
 import os
 from src import NOTES_DIR_INBOX
 from src.utils.note_utils.note_model import NoteModel
-from .note_creation_utils import generate_zk_uid, generate_uuid
+from src.inbox_notes_.new_note_utils import generate_zk_uid, generate_uuid
 
-def create_note(note: NoteModel, directory: str = NOTES_DIR_INBOX):
+def new_note(note: NoteModel, directory: str = NOTES_DIR_INBOX):
     """
     Creates a new note with a unique filename and saves it to the specified directory.
 
