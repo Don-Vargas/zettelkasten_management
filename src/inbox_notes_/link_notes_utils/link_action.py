@@ -1,4 +1,4 @@
-from src.inbox_notes_.link_notes_utils import link_note_forward
+from src.inbox_notes_.link_notes_utils.link_notes import link_note_forward
 
 from src import NOTES_DIR_INBOX, NOTES_DIR_PERMA
 

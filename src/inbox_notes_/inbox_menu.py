@@ -3,6 +3,7 @@ from src.inbox_notes_.new_note_utils import new_note_action
 from src.utils.note_utils.search_note_utils import search_notes_action
 from src.utils.note_utils.list_note_utils import list_notes_action
 from src.inbox_notes_.link_notes_utils import link_notes_action
+from src.inbox_notes_.inbox_menu_utils import ensure_uuid_and_date
 from src.utils.menu_utils import exit_program
 from src import NOTES_DIR_INBOX
 
@@ -21,6 +22,8 @@ def inbox_menu_():
         '5': lambda: 'main',
         '6': exit_program,
     }
+
+    ensure_uuid_and_date(NOTES_DIR_INBOX)
 
     while True:
         print("\n____________________________________\n ")

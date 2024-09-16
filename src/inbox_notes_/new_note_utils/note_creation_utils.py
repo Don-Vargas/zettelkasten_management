@@ -1,16 +1,15 @@
-import datetime
 import uuid
-
 from src import UID_FORMAT
 
 def generate_zk_uid() -> str:
     """
+    TODO:
     Generates a unique Zettelkasten identifier (ZK_UID) based on the current timestamp.
 
     Returns:
         str: A string representing the unique Zettelkasten identifier.
     """
-    return datetime.datetime.now().strftime(UID_FORMAT)
+    return "None"
 
 def generate_uuid() -> str:
     """

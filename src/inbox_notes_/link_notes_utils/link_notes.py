@@ -41,7 +41,10 @@ License:
 """
 import os
 
-from src.inbox_notes_.link_notes_utils import find_note_filepath, parse_note_data
+from src.inbox_notes_.link_notes_utils.link_creation_utils import (
+    find_note_filepath, 
+    parse_note_data
+    )
 
 def link_note_forward(note_uid1, linked_uids, directories):
     """
